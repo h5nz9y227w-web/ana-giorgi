@@ -1,0 +1,9 @@
+[build]
+  command = "npm install && npm run build"
+  publish = ".output/public"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+
+[functions]
+  directory = ".output/server"

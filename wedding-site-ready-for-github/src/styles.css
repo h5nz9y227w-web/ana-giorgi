@@ -1,0 +1,306 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --font-sans: "Noto Serif Georgian", Georgia, serif;
+  --font-display: "Playfair Display", "Noto Serif Georgian", Georgia, serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.375rem;
+  --background: oklch(0.96 0.028 95);
+  --foreground: oklch(0.22 0.02 110);
+  --card: oklch(0.985 0.018 95);
+  --card-foreground: oklch(0.22 0.02 110);
+  --popover: oklch(0.985 0.018 95);
+  --popover-foreground: oklch(0.22 0.02 110);
+  --primary: oklch(0.22 0.02 110);
+  --primary-foreground: oklch(0.98 0.014 95);
+  --secondary: oklch(0.92 0.035 105);
+  --secondary-foreground: oklch(0.22 0.02 110);
+  --muted: oklch(0.93 0.03 100);
+  --muted-foreground: oklch(0.46 0.03 105);
+  --accent: oklch(0.83 0.07 120);
+  --accent-foreground: oklch(0.2 0.03 120);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.55 0.05 110 / 30%);
+  --input: oklch(0.5 0.05 110 / 35%);
+  --ring: oklch(0.5 0.08 120);
+  --green-btn: oklch(0.83 0.08 130);
+  --green-btn-hover: oklch(0.78 0.09 130);
+  --green-btn-foreground: oklch(0.22 0.05 130);
+  --footer-bg: oklch(0.85 0.07 130);
+  --footer-foreground: oklch(0.24 0.04 130);
+  --input-text: oklch(0.48 0.1 145);
+  --rail-w: clamp(22px, 5.2vw, 72px);
+  --rail-h: clamp(18px, 3.8vw, 50px);
+  --vine-vertical-svg: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2090%20300%22%20width%3D%2290%22%20height%3D%22300%22%3E%3Cpath%20d%3D%22M45%200%20C20%2025%2C%2070%2055%2C%2045%2080%20C20%20105%2C%2070%20135%2C%2045%20160%20C20%20185%2C%2070%20215%2C%2045%20240%20C20%20265%2C%2070%20285%2C%2045%20300%22fill%3D%22none%22%20stroke%3D%22%23161616%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22%232a2a2a%22%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%2218%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%28-35%2045%2018%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%2218%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%2835%2045%2018%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%2298%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%2835%2045%2098%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%2298%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%28-35%2045%2098%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%22178%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%28-35%2045%20178%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%22178%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%2835%2045%20178%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%22258%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%2835%2045%20258%29%22/%3E%3Cellipse%20cx%3D%2245%22%20cy%3D%22258%22%20rx%3D%2215%22%20ry%3D%227%22%20transform%3D%22rotate%28-35%2045%20258%29%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23161616%22%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2258%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%2263%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%2270%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%2272%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%2280%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%22138%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%22143%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%22150%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%22152%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22160%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%22218%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2247%22%20cy%3D%22223%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2242%22%20cy%3D%22230%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2251%22%20cy%3D%22232%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2245%22%20cy%3D%22240%22%20r%3D%225%22/%3E%3C/g%3E%3C/svg%3E");
+  --vine-horizontal-svg: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20300%2090%22%20width%3D%22300%22%20height%3D%2290%22%3E%3Cpath%20d%3D%22M0%2045%20C25%2020%2C%2055%2070%2C%2080%2045%20C105%2020%2C%20135%2070%2C%20160%2045%20C185%2020%2C%20215%2070%2C%20240%2045%20C265%2020%2C%20285%2070%2C%20300%2045%22fill%3D%22none%22%20stroke%3D%22%23161616%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22/%3E%3Cg%20fill%3D%22%232a2a2a%22%3E%3Cellipse%20cx%3D%2218%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%28-35%2018%2045%29%22/%3E%3Cellipse%20cx%3D%2218%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%2835%2018%2045%29%22/%3E%3Cellipse%20cx%3D%2298%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%2835%2098%2045%29%22/%3E%3Cellipse%20cx%3D%2298%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%28-35%2098%2045%29%22/%3E%3Cellipse%20cx%3D%22178%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%28-35%20178%2045%29%22/%3E%3Cellipse%20cx%3D%22178%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%2835%20178%2045%29%22/%3E%3Cellipse%20cx%3D%22258%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%2835%20258%2045%29%22/%3E%3Cellipse%20cx%3D%22258%22%20cy%3D%2245%22%20rx%3D%227%22%20ry%3D%2215%22%20transform%3D%22rotate%28-35%20258%2045%29%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23161616%22%3E%3Ccircle%20cx%3D%2258%22%20cy%3D%2238%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2263%22%20cy%3D%2247%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2270%22%20cy%3D%2242%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2272%22%20cy%3D%2251%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2245%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22138%22%20cy%3D%2238%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22143%22%20cy%3D%2247%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22150%22%20cy%3D%2242%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22152%22%20cy%3D%2251%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22160%22%20cy%3D%2245%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22218%22%20cy%3D%2238%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22223%22%20cy%3D%2247%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22230%22%20cy%3D%2242%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22232%22%20cy%3D%2251%22%20r%3D%225%22/%3E%3Ccircle%20cx%3D%22240%22%20cy%3D%2245%22%20r%3D%225%22/%3E%3C/g%3E%3C/svg%3E");
+  --olive-faint: oklch(0.93 0.035 105);
+  --paper-deep: oklch(0.94 0.035 95);
+  --gold-soft: oklch(0.5 0.08 120);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    margin: 0;
+    letter-spacing: 0;
+    padding: var(--rail-h) var(--rail-w);
+    overflow-x: hidden;
+    color-scheme: light;
+  }
+
+  input, textarea, button { font: inherit; }
+  input, textarea { outline: none; }
+  input:focus, textarea:focus { border-color: var(--ring); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 14%, transparent); }
+}
+
+@theme inline {
+  --color-olive-faint: var(--olive-faint);
+  --color-paper-deep: var(--paper-deep);
+  --color-gold-soft: var(--gold-soft);
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.invitation-page { background: var(--background); color: var(--foreground); }
+.section-shell { width: min(100% - 2rem, 66rem); margin-inline: auto; }
+
+/* Full-page ornamental frame — vine + grape motif runs along all four edges
+   of the viewport, on every screen size, behind nothing (fixed, on top of
+   section backgrounds) so it always reads as a continuous decorative border. */
+.vine-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: var(--rail-w);
+  background-color: var(--paper-deep);
+  background-image: url("/images/vine-v.jpg");
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100% 460px;
+  box-shadow: 0 0 0 1px var(--border) inset;
+  z-index: 40;
+  pointer-events: none;
+}
+.vine-rail-left { left: 0; }
+.vine-rail-right { right: 0; transform: scaleX(-1); }
+.vine-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: var(--rail-h);
+  background-color: var(--paper-deep);
+  background-image: url("/images/vine-h.jpg");
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 460px 100%;
+  box-shadow: 0 0 0 1px var(--border) inset;
+  z-index: 41;
+  pointer-events: none;
+}
+.vine-bar-top { top: 0; }
+.vine-bar-bottom { bottom: 0; }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.cover-section { padding-block: clamp(3.5rem, 10vw, 6.5rem) 1rem; animation: reveal-up 900ms ease-out both; }
+.hero-names { margin: .5rem 0 0; }
+.hero-illustration { width: min(100%, 27rem); margin: 1rem auto 1.75rem; }
+.hero-illustration img {
+  display: block;
+  width: 100%;
+  height: auto;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 75% at 50% 45%, black 60%, transparent 100%);
+}
+.hero-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem 1.75rem; color: var(--muted-foreground); font-size: clamp(.85rem, 2.2vw, 1rem); }
+.hero-meta span { display: inline-flex; align-items: center; gap: .5rem; }
+.hero-meta svg { width: 1.05rem; flex: none; color: var(--gold-soft); }
+.story-section { padding-block: 3rem 5rem; }
+.eyebrow { margin: 0 0 1rem; font-size: .73rem; font-weight: 600; text-transform: uppercase; color: var(--muted-foreground); }
+.story-section h2, .section-heading h2, .rsvp-intro h2, .wishes-section h2 { margin: 0; font-size: clamp(2rem, 6vw, 4.5rem); line-height: 1.15; font-weight: 500; }
+.names { margin: 1.4rem 0; font-family: var(--font-display); font-style: italic; font-size: clamp(2.3rem, 8vw, 5.2rem); color: var(--primary); }
+.names span { color: var(--gold-soft); padding-inline: .25em; }
+.ornament { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 2.25rem auto; max-width: 22rem; color: var(--primary); }
+.ornament > span:not(.ornament-mark) { height: 1px; flex: 1; background: var(--border); }
+.ornament-mark { font-size: 1.6rem; color: var(--gold-soft); }
+.prose-copy { max-width: 47rem; margin-inline: auto; }
+.prose-copy > p { margin: 0 auto 1.8rem; font-size: clamp(1.05rem, 2.2vw, 1.3rem); line-height: 2; }
+.portrait-section { padding-block: 2rem 6rem; }
+.portrait-wrap { position: relative; width: min(100%, 43rem); margin-inline: auto; padding: .75rem; border: 1px solid var(--border); background: var(--card); box-shadow: 0 24px 70px color-mix(in oklab, var(--foreground) 10%, transparent); }
+.portrait-frame { width: 100%; aspect-ratio: 4 / 5; overflow: hidden; }
+.portrait-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+.portrait-corner { position: absolute; z-index: 1; font-size: 2.2rem; color: var(--primary); background: var(--background); width: 3.2rem; height: 3.2rem; display: grid; place-items: center; }
+.portrait-corner-one { left: -.8rem; top: -.8rem; }
+.portrait-corner-two { right: -.8rem; bottom: -.8rem; }
+.details-section { padding-block: 3rem 7rem; }
+.signature { margin: 3rem auto; font-size: 1.05rem; line-height: 2; color: var(--muted-foreground); }
+.signature strong { color: var(--primary); font-size: 1.2rem; }
+.event-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--border); }
+.event-facts div { min-height: 9rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; padding: 1rem; }
+.event-facts div + div { border-left: 1px solid var(--border); }
+.event-facts svg { width: 1.35rem; color: var(--gold-soft); }
+.event-facts span { font-size: .95rem; line-height: 1.6; }
+.field-label { font-size: .82rem; font-weight: 600; margin-top: .5rem; }
+.comment-form { display: grid; gap: 1rem; }
+.form-error { margin: 0; font-size: .82rem; color: var(--destructive); font-weight: 600; }
+.location-section { padding-block: 1rem 4rem; }
+.map-link { width: fit-content; margin: 0 auto; display: inline-flex; align-items: center; gap: .55rem; padding: .9rem 1.8rem; border-radius: 999px; background: var(--green-btn); color: var(--green-btn-foreground); font-weight: 600; text-decoration: none; }
+.map-link:hover { background: var(--green-btn-hover); }
+.map-link svg { width: 1.1rem; }
+.wishes-section { padding-block: 7rem; background: var(--paper-deep); }
+.wishes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 8vw, 7rem); }
+.wishes-section h2 { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: 2rem; }
+.comment-form input, .comment-form textarea { background: var(--background); color: var(--input-text); border-color: var(--border); resize: vertical; }
+.comment-form input::placeholder, .comment-form textarea::placeholder { color: color-mix(in oklab, var(--input-text) 55%, transparent); }
+.comment-form button { width: fit-content; margin-top: .5rem; background-color: var(--green-btn); color: var(--green-btn-foreground); }
+.comment-form button:hover { background-color: var(--green-btn-hover); color: var(--green-btn-foreground); }
+.confirm-note { padding-block: 1rem 3rem; }
+.confirm-note p { display: inline-flex; align-items: center; gap: .6rem; margin: 0; font-size: 1.05rem; color: var(--muted-foreground); }
+.confirm-note svg { width: 1.1rem; color: var(--gold-soft); }
+.comments-list { display: grid; gap: 1px; align-content: start; background: var(--border); border: 1px solid var(--border); max-height: 39rem; overflow-y: auto; }
+.comment-item, .empty-wish { background: var(--background); padding: 1.5rem; }
+.comment-item > svg, .empty-wish svg { width: 1rem; fill: var(--gold-soft); color: var(--gold-soft); }
+.comment-item p { margin: .7rem 0; line-height: 1.75; }
+.comment-item footer { color: var(--muted-foreground); font-size: .82rem; }
+.empty-wish { min-height: 12rem; display: grid; place-items: center; text-align: center; color: var(--muted-foreground); }
+.finale { padding: 5rem 1rem; text-align: center; background: var(--footer-bg); color: var(--footer-foreground); }
+.finale .ornament { margin-block: 0 1rem; color: var(--footer-foreground); }
+.finale .ornament > span:not(.ornament-mark) { background: color-mix(in oklab, var(--footer-foreground) 30%, transparent); }
+.finale .names { color: var(--footer-foreground); font-size: clamp(2rem, 7vw, 4rem); }
+.finale > p:last-child { color: color-mix(in oklab, var(--footer-foreground) 65%, transparent); font-size: .8rem; }
+
+@media (max-width: 700px) {
+  .section-shell { width: min(100% - 1.5rem, 66rem); }
+  .story-section { padding-top: 5rem; }
+  .wishes-grid { grid-template-columns: 1fr; }
+  .event-facts { grid-template-columns: 1fr; }
+  .event-facts div { min-height: 7rem; }
+  .event-facts div + div { border-left: 0; border-top: 1px solid var(--border); }
+}
+
+@media (max-width: 420px) {
+  :root { --rail-w: 20px; --rail-h: 17px; }
+  .vine-rail { background-size: 100% 300px; }
+  .vine-bar { background-size: 300px 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
